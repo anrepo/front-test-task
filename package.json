@@ -1,0 +1,25 @@
+{
+  "name": "front-test-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev" : "webpack --mode development",
+    "watch" : "webpack --mode development --watch",
+    "build" : "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paa107/front-test-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paa107/front-test-task/issues"
+  },
+  "homepage": "https://github.com/paa107/front-test-task#readme",
+  "devDependencies": {
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  }
+}
