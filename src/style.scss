@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import './fonts/opensans.scss';
 
 $color-text : lightgreen;
 
+* {
+  font-family: Arial;
+}
+
 .title {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans';
   color: $color-text;
 }
