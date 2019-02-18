@@ -17,9 +17,15 @@ module.exports = {
         })
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        test: /\.(eot|ttf|woff|woff2)$/,
         use: [{
           loader: 'file-loader?name=fonts/[name].[ext]'
+        }]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        use: [{
+          loader: 'file-loader?name=images/[name].[ext]'
         }]
       }
     ]

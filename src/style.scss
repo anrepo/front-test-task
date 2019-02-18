@@ -1,7 +1,5 @@
 @import './fonts/opensans.scss';
 
-// Блок переменных
-
 $back-ground: #191c24;
 
 // Стиль текста в панели навигации
@@ -31,6 +29,11 @@ $send-btn-align: center;
 
 // Формат блока авторризации
 $auth-bg-color: #f7f8f8;
+
+/* Кнопка отправки данных */
+$bg-btn: #005abf;
+$bg-btn-rgba: rgba(0, 90, 191, 1);
+$bg-btn-rgba-active: rgba(0, 90, 191, 0.18);
 
 // Формат инфо блока
 $main-width: 639px;
@@ -265,18 +268,19 @@ main {
     }
   }
 
+  /* Кнопка отправки данных */
   .send-btn {
     margin: 54px 0 0 15px;
-    border: 0px;
-    border-radius: 20px;
-    background: -webkit-linear-gradient(90deg, rgba(0, 90, 191, 1) 0%, rgba(0, 90, 191, 0.4) 100%);
-    background: -moz-linear-gradient(90deg, rgba(0, 90, 191, 1) 0%, rgba(0, 90, 191, 0.4) 100%);
-    background: -o-linear-gradient(90deg, rgba(0, 90, 191, 1) 0%, rgba(0, 90, 191, 0.4) 100%);
-    background: -ms-linear-gradient(90deg, rgba(0, 90, 191, 1) 0%, rgba(0, 90, 191, 0.4) 100%);
-    background: linear-gradient(0deg, rgba(0, 90, 191, 1) 0%, rgba(0, 90, 191, 0.4) 100%);
-    /*Размеры кнопки*/
+    background-color: $bg-btn;
+    background: -webkit-linear-gradient(90deg, $bg-btn-rgba 0%, $bg-btn-rgba-active 100%);
+    background: -moz-linear-gradient(90deg, $bg-btn-rgba 0%, $bg-btn-rgba-active 100%);
+    background: o-linear-gradient(90deg, $bg-btn-rgba 0%, $bg-btn-rgba-active 100%);
+    background: ms-linear-gradient(90deg, $bg-btn-rgba 0%, $bg-btn-rgba-active 100%);
+    background: linear-gradient(0deg, $bg-btn-rgba 0%, $bg-btn-rgba-active 100%);
     width: $send-btn-width;
     height: $send-btn-height;
+    border: 0px;
+    border-radius: 20px;
     /*Формат текста*/
     font-family: OpenSans;
     color:  #ffffff;
@@ -287,6 +291,14 @@ main {
   }
   .send-btn:hover {
     cursor: pointer;
+  }
+  .send-btn:active {
+    background-color: $bg-btn;
+    background: -webkit-linear-gradient(90deg, $bg-btn-rgba-active 0%, $bg-btn-rgba 100%);
+    background: -moz-linear-gradient(90deg, $bg-btn-rgba-active 0%, $bg-btn-rgba 100%);
+    background: o-linear-gradient(90deg, $bg-btn-rgba-active 0%, $bg-btn-rgba 100%);
+    background: ms-linear-gradient(90deg, $bg-btn-rgba-active 0%, $bg-btn-rgba 100%);
+    background: linear-gradient(0deg, $bg-btn-rgba-active 0%, $bg-btn-rgba 100%);
   }
 }
 
