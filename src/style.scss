@@ -10,7 +10,7 @@ $nav-item-width: 318px;
 $nav-padding-left: 29px;
 
 $nav__item_active: #2a2d37;
-$nav__item_near: red;
+$nav__item_near: #1f2229;
 
 // переменные шрифтов
 $subtitle-color: #8494ab;
@@ -18,19 +18,21 @@ $value-color: #373c43;
 $placeholder-color: #bec6cf;
 $footer-color:  #89909d;
 
+// Формат блока авторризации
+$auth-bg-color: #f7f8f8;
+
+//цвет границы input
+$br-color-item: #e4e9ee;
+
 //размеры кнопки отправки
 $send-btn-width: 133px;
 $send-btn-height: 40px;
-// шрифт кнопки отправки
+//шрифт кнопки отправки
 $send-btn-color:  #fff;
 $send-btn-size: 14px;
 $send-btn-weight: 700;
 $send-btn-align: center;
-
-// Формат блока авторризации
-$auth-bg-color: #f7f8f8;
-
-/* Кнопка отправки данных */
+//цвет кнопки
 $bg-btn: #005abf;
 $bg-btn-rgba: rgba(0, 90, 191, 1);
 $bg-btn-rgba-active: rgba(0, 90, 191, 0.18);
@@ -39,7 +41,7 @@ $bg-btn-rgba-active: rgba(0, 90, 191, 0.18);
 $main-width: 639px;
 
 // Footer формат
-$footer-background: #373c43;
+$footer-background: #191c24;
 $footer-font-size: 12px;
 $footer-line-height: 18px;
 
@@ -80,10 +82,12 @@ html, body {
 // панель навигации
 nav ul {
   list-style-type: none;
+  
 }
 .nav__item {
   background-color: $back-ground;
   padding-left: $nav-padding-left;
+  
   a {
     display: block;
     min-width: $nav-item-width;
@@ -100,6 +104,15 @@ nav ul {
   a:hover {
     cursor: pointer;
   }
+}
+.nav__item_active {
+  background-color: #2a2d37;
+  a {
+    color: #808592;
+  }
+}
+.nav__item_active-near{
+  background-color: $nav__item_near;
 }
 .nav__item:last-child a {
   color: #808592;
@@ -134,7 +147,6 @@ main {
   #card-block{
     position: relative;
     width: 100%;
-//    height: 256px;
     
     form {
         position: relative;
@@ -142,21 +154,31 @@ main {
         padding: 22px 0 0 15px;
         width: 100%;
         box-sizing: border-box;
+      
+        .input-item{
+          border: 1px solid $br-color-item;
+          box-sizing: border-box;
+          background-color:  #ffffff;
+        }
         
         .card-number {
           display: flex;
           margin-top: 2px 0 12px 0;
           
           .card-number__item {
-            border: 1px solid #e4e9ee;
-            box-sizing: border-box;
-            background-color:  #ffffff;
             width: 65px;
             height: 42px;
             margin-right: 9px;
             padding-left: 12px;
             
           }
+        }
+        
+        .novalid {
+          border-color: lightcoral;
+        }
+        .valid {
+          border-color: $br-color-item;
         }
         
         #wrap-date-cvv {
@@ -169,9 +191,6 @@ main {
           margin-right: 9px;
           
           select {
-            border: 1px solid #e4e9ee;
-            box-sizing: border-box;
-            background-color:  #ffffff;
             width: 70px;
             height: 42px;
             text-align: center;
@@ -189,9 +208,6 @@ main {
             }
             #cvv-field {
               display: block;
-              border: 1px solid #e4e9ee;
-              box-sizing: border-box;
-              background-color:  #ffffff;
               width: 138px;
               height: 42px;
               margin-top: 2px;
@@ -219,7 +235,7 @@ main {
           margin-top: 12px;
           
           .card-user__field {
-            border: 1px solid #e4e9ee;
+//            border: 1px solid #e4e9ee;
             box-sizing: border-box;
             background-color:  #ffffff;
             width: 319px;
@@ -227,15 +243,15 @@ main {
             color: $value-color;
             padding: 0 12px 0 12px;
           }
-          .card-user__field::-webkit-input-placeholder {color:$placeholder-color; opacity:1;} /* webkit */
-          .card-user__field::-moz-placeholder          {color:$placeholder-color; opacity:1;} /* Firefox 19+ */
-          .card-user__field:-moz-placeholder           {color:$placeholder-color; opacity:1;} /* Firefox 18- */
-          .card-user__field:-ms-input-placeholder      {color:$placeholder-color; opacity:1;} /* IE */
+          .card-user__field::-webkit-input-placeholder {color:$placeholder-color; opacity:1;}
+          .card-user__field::-moz-placeholder          {color:$placeholder-color; opacity:1;}
+          .card-user__field:-moz-placeholder           {color:$placeholder-color; opacity:1;}
+          .card-user__field:-ms-input-placeholder      {color:$placeholder-color; opacity:1;}
           
-          .card-user__field:focus::-webkit-input-placeholder {opacity:0;} /* webkit */
-          .card-user__field:focus::-moz-placeholder          {opacity:0;} /* Firefox 19+ */
-          .card-user__field:focus:-moz-placeholder           {opacity:0;} /* Firefox 18- */
-          .card-user__field:focus:-ms-input-placeholder      {opacity:0;} /* IE */
+          .card-user__field:focus::-webkit-input-placeholder {opacity:0;}
+          .card-user__field:focus::-moz-placeholder          {opacity:0;}
+          .card-user__field:focus:-moz-placeholder           {opacity:0;}
+          .card-user__field:focus:-ms-input-placeholder      {opacity:0;}
         }
       }
     
@@ -398,6 +414,9 @@ footer {
             }
             .card-number__item:last-child {
               margin-right: 0;
+            }
+            .card-number__item:invalid {
+              border-color: red;
             }
           }
           

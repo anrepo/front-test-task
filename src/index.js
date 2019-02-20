@@ -3,24 +3,78 @@ import './js-styling/jquery-ui.min.js';
 import './js-styling/jquery-ui.css';
 import './style.scss';
 
-console.log("Запуск прошел успешно!");
-
 $(function () {
 
+  // изменение цвета элементов навигационного меню
   $('.nav__item').click(function(){
-    $('.nav__item').removeClass('active');
-    $('.nav__item').css('background-color', '#191c24');
-    $('.nav__item a').css('color', '#fff');
-    $('.nav__item:last-child a').css('color', '#808592');
-    $(this).addClass('active').css('background-color', '#2a2d37');
-    $(this).children('a').css('color', '#808592');
-    $(this).prev().css('background-color', '#1f2229');
-    $(this).next().css('background-color', '#1f2229');
+    $('.nav__item').removeClass('nav__item_active');
+    $('.nav__item').removeClass('nav__item_active-near');
+    $(this).addClass('nav__item_active');
+    $(this).prev().addClass('nav__item_active-near');
+    $(this).next().addClass('nav__item_active-near');
   });
-
+  
+  // меняем стил выпадающих списков
   $('.dropdown').selectmenu({
     icons: { button: "select-arrow" }
   });
   
-});
+  
+  //заполняем форму данными
+//  $('.card-number__item').each(function(){
+//    $(this).val('5555');
+//  });
+//  $('#cvv-field').val('123');
+//  $('.card-user__field').val('Andrey Grachev');
+  
+  
+  
+  // валидация и отправка данных формы
+  $('.send-btn').click( function () {
+  
+    $('form').submit(function(event){
+      //останавливаем отправку данных формы
+      event.preventDefault();
+      
+      //проверка валидности данных формы
+      $('.input-item').each( function() {
+        if ( $(this).val() == "") {
+          $(this).addClass('novalid');
+          $(this).prop('required',true);
+        } else {
+          $(this).removeClass('novalid').addClass('valid');
+        };
+      });
+      // условие для списков jQueryUI
+      $('.ui-selectmenu-button').each( function() {
+        if ( $('.ui-selectmenu-text', this).html() == '&nbsp;') {
+          $(this).addClass('novalid');
+        } else {
+          $(this).removeClass('novalid').addClass('valid');
+        };
+      });
+      
+      // условие отправки данных формы
+      var len = 0;
+      $('.input-item').each( function() {
+        if ( $(this).hasClass('valid') == true ) {
+          len++;
+        }
+      });
+      $('.ui-selectmenu-button.ui-button').each( function() {
+        if ( $(this).hasClass('valid') == true ) {
+          len++;
+        }
+      });
 
+      // условие отправки данных формы
+      if (len == 8) {
+        $('form').unbind('submit').submit();
+        console.log("Data sended...");
+      }
+      
+    });
+    
+  });
+  
+});

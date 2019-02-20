@@ -178,7 +178,8 @@
 .ui-selectmenu-button.ui-button {
 	text-align: left;
 	white-space: nowrap;
-/*	width: 70px;*/
+  min-width: 44px;
+/*	width: 62px;*/
 /*  height: 42px;*/
 }
 .ui-selectmenu-icon.ui-icon {
