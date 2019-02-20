@@ -2,6 +2,8 @@
 
 $back-ground: #191c24;
 
+$err-color: coral;
+
 // Стиль текста в панели навигации
 $nav-font: #fff;
 $nav-size: 18px;
@@ -160,6 +162,10 @@ main {
           box-sizing: border-box;
           background-color:  #ffffff;
         }
+        .input-item:invalid {
+          border-color: $err-color;
+          outline: 0;
+        }
         
         .card-number {
           display: flex;
@@ -175,7 +181,7 @@ main {
         }
         
         .novalid {
-          border-color: lightcoral;
+          border-color: $err-color;
         }
         .valid {
           border-color: $br-color-item;

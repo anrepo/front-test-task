@@ -3,7 +3,7 @@ import './js-styling/jquery-ui.min.js';
 import './js-styling/jquery-ui.css';
 import './style.scss';
 
-$(function () {
+$(function() {
 
   // изменение цвета элементов навигационного меню
   $('.nav__item').click(function(){
@@ -13,6 +13,7 @@ $(function () {
     $(this).prev().addClass('nav__item_active-near');
     $(this).next().addClass('nav__item_active-near');
   });
+  
   
   // меняем стил выпадающих списков
   $('.dropdown').selectmenu({
@@ -36,11 +37,17 @@ $(function () {
       //останавливаем отправку данных формы
       event.preventDefault();
       
+      // очистка нынешнего состояния
+      $('.input-item').each( function() {
+        if ( $(this).val() == "" && $(this).hasClass('valid')) {
+          $(this).removeClass('valid').addClass('novalid');
+        }
+      });
+      
       //проверка валидности данных формы
       $('.input-item').each( function() {
         if ( $(this).val() == "") {
           $(this).addClass('novalid');
-          $(this).prop('required',true);
         } else {
           $(this).removeClass('novalid').addClass('valid');
         };
@@ -59,12 +66,12 @@ $(function () {
       $('.input-item').each( function() {
         if ( $(this).hasClass('valid') == true ) {
           len++;
-        }
+        };
       });
       $('.ui-selectmenu-button.ui-button').each( function() {
         if ( $(this).hasClass('valid') == true ) {
           len++;
-        }
+        };
       });
 
       // условие отправки данных формы
